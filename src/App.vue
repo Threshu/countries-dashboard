@@ -7,7 +7,7 @@
 						<v-card>
 							<v-card-title>Countries Dashboard</v-card-title>
 							<v-card-text>
-								<p>Content</p>
+								<p>{{ result }}</p>
 								<v-btn color="primary" class="mr-2">Test button</v-btn>
 							</v-card-text>
 						</v-card>
@@ -17,6 +17,26 @@
 		</v-main>
 	</v-app>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+	import { useQuery } from "@vue/apollo-composable";
+	import gql from "graphql-tag";
+
+	const { result } = useQuery(gql`
+		query {
+			countries {
+				code
+				name
+				native
+				capital
+				emoji
+				currency
+				languages {
+					code
+					name
+				}
+			}
+		}
+	`);
+</script>
 
 <style scoped></style>
