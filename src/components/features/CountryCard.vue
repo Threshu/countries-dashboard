@@ -40,7 +40,7 @@
 				<v-card-title
 					ref="titleRef"
 					v-bind="props"
-					class="text-center pt-3 pb-2 px-2 text-h6 font-weight-bold"
+					class="text-center pt-2 pb-1 px-2 text-h6 font-weight-bold"
 				>
 					{{ country.name }}
 				</v-card-title>
@@ -49,15 +49,15 @@
 		<v-card-title
 			v-else
 			ref="titleRef"
-			class="text-center pt-3 pb-2 px-2 text-h6 font-weight-bold"
+			class="text-center pt-2 pb-1 px-2 text-h6 font-weight-bold"
 		>
 			{{ country.name }}
 		</v-card-title>
 
-		<v-card-text class="text-center py-2 px-2">
-			<div class="d-flex align-center justify-center flex-wrap ga-2">
+		<v-card-text class="text-center py-1 px-2">
+			<div class="d-flex align-center justify-center flex-wrap ga-1">
 				<v-chip size="default" variant="tonal" color="secondary">
-					<v-icon start size="default">mdi-map-marker</v-icon>
+					<v-icon start size="small">mdi-map-marker</v-icon>
 					{{ country.capital || "No capital" }}
 				</v-chip>
 				<v-chip
@@ -66,7 +66,7 @@
 					variant="tonal"
 					size="default"
 				>
-					<v-icon start size="default">mdi-currency-usd</v-icon>
+					<v-icon start size="small">mdi-currency-usd</v-icon>
 					{{ country.currency }}
 				</v-chip>
 				<v-chip v-else color="grey" size="default" variant="outlined">
@@ -79,8 +79,9 @@
 
 <script setup lang="ts">
 	import { computed, ref, onMounted, nextTick } from "vue";
+	import { useRouter } from "vue-router";
 	import type { ComponentPublicInstance } from "vue";
-	import type { Country } from "@/types/graphql";
+	import type { Country } from "@/types";
 
 	interface Props {
 		country: Country;
@@ -88,9 +89,7 @@
 
 	const props = defineProps<Props>();
 
-	const emit = defineEmits<{
-		select: [code: string];
-	}>();
+	const router = useRouter();
 
 	const titleRef = ref<ComponentPublicInstance | null>(null);
 	const showTooltip = ref(false);
@@ -113,7 +112,10 @@
 	});
 
 	function handleClick() {
-		emit("select", props.country.code);
+		router.push({
+			name: "country-detail",
+			params: { code: props.country.code },
+		});
 	}
 </script>
 
@@ -138,6 +140,6 @@
 
 	.country-card .v-card-title {
 		word-break: break-word;
-		min-height: 48px;
+		min-height: 36px;
 	}
 </style>

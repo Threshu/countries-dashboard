@@ -12,6 +12,10 @@ export const GET_COUNTRIES=gql`
 				code
 				name
 			}
+			languages {
+				code
+				name
+			}
 		}
 	}
 `;

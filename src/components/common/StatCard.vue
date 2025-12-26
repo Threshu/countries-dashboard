@@ -3,8 +3,12 @@
 		<v-card-text>
 			<div class="d-flex align-center justify-space-between">
 				<div>
-					<p class="text-caption text-grey mb-1">{{ title }}</p>
-					<p class="text-h4 font-weight-bold">{{ value }}</p>
+					<p class="text-body-1 mb-1 text-grey">
+						{{ title }}
+					</p>
+					<p class="text-h3 font-weight-bold">
+						{{ value }}
+					</p>
 				</div>
 				<v-avatar :color="color" size="56">
 					<v-icon :icon="icon" size="32" color="white" />

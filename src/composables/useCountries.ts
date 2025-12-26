@@ -1,7 +1,7 @@
-import { useQuery } from '@vue/apollo-composable';
 import { computed } from 'vue';
+import { useQuery } from '@vue/apollo-composable';
 import { GET_COUNTRIES } from '@/apollo/queries/countries';
-import type { Country } from "@/types/graphql";
+import type { Country } from "@/types";
 
 interface CountriesQueryResult {
   countries: Country[];

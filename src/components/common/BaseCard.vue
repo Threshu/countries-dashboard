@@ -1,25 +1,24 @@
 <template>
-	<v-container fluid class="pa-4">
-		<v-card class="mx-auto" elevation="2">
-			<v-card-title class="text-h4 font-weight-bold pa-6 pb-2">
-				{{ title }}
-			</v-card-title>
+	<v-card elevation="2">
+		<v-card-title class="pa-4">
+			<div class="d-flex align-center flex-wrap ga-3">
+				<span class="text-h4 font-weight-bold">{{ title }}</span>
+				<span v-if="subtitle" class="text-body-1 text-medium-emphasis">
+					• {{ subtitle }}
+				</span>
+			</div>
+		</v-card-title>
 
-			<v-card-subtitle v-if="subtitle" class="px-6 pb-4 text-subtitle-1">
-				{{ subtitle }}
-			</v-card-subtitle>
+		<v-divider />
 
-			<v-divider />
+		<v-card-text class="pa-4">
+			<div v-if="loading" class="text-center py-8">
+				<v-progress-circular indeterminate color="primary" size="64" />
+			</div>
 
-			<v-card-text class="pa-6">
-				<div v-if="loading" class="text-center py-12">
-					<v-progress-circular indeterminate color="primary" size="64" />
-				</div>
-
-				<slot v-else />
-			</v-card-text>
-		</v-card>
-	</v-container>
+			<slot v-else />
+		</v-card-text>
+	</v-card>
 </template>
 
 <script setup lang="ts">
