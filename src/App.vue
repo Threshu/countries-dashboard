@@ -5,10 +5,19 @@
 				<v-row>
 					<v-col cols="12">
 						<v-card>
-							<v-card-title>Countries Dashboard</v-card-title>
+							<v-card-title>Countries test</v-card-title>
 							<v-card-text>
-								<p>{{ result }}</p>
-								<v-btn color="primary" class="mr-2">Test button</v-btn>
+								<div v-if="loading">Loading countries...</div>
+								<div v-else-if="error">Error: {{ error.message }}</div>
+								<div v-else>
+									<h3>✅ {{ result?.countries.length }} countries loaded!</h3>
+									<div
+										v-for="country in result?.countries.slice(0, 25)"
+										:key="country.code"
+									>
+										{{ country.emoji }} {{ country.name }}
+									</div>
+								</div>
 							</v-card-text>
 						</v-card>
 					</v-col>
@@ -19,24 +28,6 @@
 </template>
 <script setup lang="ts">
 	import { useQuery } from "@vue/apollo-composable";
-	import gql from "graphql-tag";
-
-	const { result } = useQuery(gql`
-		query {
-			countries {
-				code
-				name
-				native
-				capital
-				emoji
-				currency
-				languages {
-					code
-					name
-				}
-			}
-		}
-	`);
+	import { GET_COUNTRIES } from "./apollo/queries/countries";
+	const { result, loading, error } = useQuery(GET_COUNTRIES);
 </script>
-
-<style scoped></style>
