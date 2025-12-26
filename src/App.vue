@@ -8,12 +8,10 @@
 							<LoadingState v-if="loading" message="Loading countries..." />
 							<ErrorState v-else-if="error" :message="error.message" />
 							<div v-else>
-								<h3 class="mb-4">
-									{{ result?.countries.length }} countries loaded
-								</h3>
+								<h3 class="mb-4">{{ countries.length }} countries loaded!</h3>
 								<div class="d-flex flex-wrap ga-2">
 									<v-chip
-										v-for="country in result?.countries.slice(0, 25)"
+										v-for="country in countries.slice(0, 25)"
 										:key="country.code"
 									>
 										{{ country.emoji }} {{ country.name }}
@@ -29,11 +27,10 @@
 </template>
 
 <script setup lang="ts">
-	import { useQuery } from "@vue/apollo-composable";
-	import { GET_COUNTRIES } from "./apollo/queries/countries";
-	import BaseCard from "./components/common/BaseCard.vue";
-	import LoadingState from "./components/common/LoadingState.vue";
-	import ErrorState from "./components/common/ErrorState.vue";
+	import { useCountries } from "@/composables/useCountries";
+	import BaseCard from "@/components/common/BaseCard.vue";
+	import LoadingState from "@/components/common/LoadingState.vue";
+	import ErrorState from "@/components/common/ErrorState.vue";
 
-	const { result, loading, error } = useQuery(GET_COUNTRIES);
+	const { countries, loading, error } = useCountries();
 </script>
