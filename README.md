@@ -22,6 +22,12 @@ Projekt aktualnie w fazie developmentu. Planuję zaimplementować:
 
 API: [Countries GraphQL](https://countries.trevorblades.com/)
 
+## Credits & Licenses
+
+- **Country data**: [Countries GraphQL API](https://countries.trevorblades.com/) by Trevor Blades
+- **Flag images**: [Flagpedia.net](https://flagpedia.net) via [flagcdn.com](https://flagcdn.com/)
+- **Flag sources**: [Wikipedia Commons](https://commons.wikimedia.org/wiki/Category:SVG_flags_by_country) (open license)
+
 ## Setup projektu
 
 ```bash
