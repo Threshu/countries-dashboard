@@ -1,8 +1,14 @@
 <template>
 	<v-app-bar color="primary" elevation="4" prominent>
 		<v-app-bar-title class="text-h5 font-weight-bold">
-			<v-icon icon="mdi-earth" size="large" class="mr-2" />
-			Countries Dashboard
+			<router-link
+				:to="{ name: 'dashboard' }"
+				class="text-decoration-none text-white d-flex align-center"
+				style="cursor: pointer"
+			>
+				<v-icon icon="mdi-earth" size="large" class="mr-2" />
+				Countries Dashboard
+			</router-link>
 		</v-app-bar-title>
 
 		<v-spacer />
