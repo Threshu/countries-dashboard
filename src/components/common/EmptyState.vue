@@ -1,6 +1,10 @@
 <template>
-	<div class="d-flex flex-column align-center justify-center">
-		<v-icon :icon="icon" size="64" color="grey" />
+	<div
+		class="d-flex flex-column align-center justify-center"
+		role="status"
+		:aria-label="message"
+	>
+		<v-icon :icon="icon" size="64" color="grey" aria-hidden="true" />
 		<p class="text-h6 mt-4 text-grey">{{ message }}</p>
 	</div>
 </template>

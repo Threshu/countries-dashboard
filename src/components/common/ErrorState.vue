@@ -1,5 +1,5 @@
 <template>
-	<div class="text-center">
+	<div class="text-center" role="alert" aria-live="assertive">
 		<v-alert type="error" variant="tonal">
 			{{ message }}
 		</v-alert>
@@ -9,6 +9,7 @@
 			color="error"
 			variant="outlined"
 			class="mt-4"
+			aria-label="Retry loading data"
 			@click="handleRetry"
 		>
 			Try Again

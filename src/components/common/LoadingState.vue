@@ -2,6 +2,8 @@
 	<div
 		class="d-flex flex-column align-center justify-center"
 		style="min-height: 150px"
+		role="status"
+		:aria-label="message"
 	>
 		<v-progress-circular indeterminate color="primary" size="64" />
 		<p class="text-h6 mt-4">{{ message }}</p>

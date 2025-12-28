@@ -1,5 +1,10 @@
 <template>
-	<v-card class="fill-height stat-card" :elevation="elevation">
+	<v-card
+		class="fill-height stat-card"
+		:elevation="elevation"
+		role="region"
+		:aria-label="`${title}: ${value}`"
+	>
 		<v-card-text>
 			<div class="d-flex align-center justify-space-between">
 				<div>
@@ -10,7 +15,7 @@
 						{{ value }}
 					</p>
 				</div>
-				<v-avatar :color="color" size="56">
+				<v-avatar :color="color" size="56" aria-hidden="true">
 					<v-icon :icon="icon" size="32" color="white" />
 				</v-avatar>
 			</div>
