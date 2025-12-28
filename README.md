@@ -4,6 +4,8 @@
 
 A portfolio project showcasing **Vue 3 Composition API**, **TypeScript**, **Apollo Client**, and **Vuetify 3** best practices. Built with performance, accessibility, and clean code architecture in mind.
 
+**🚀 [Live Demo](https://threshu.github.io/countries-dashboard/)**
+
 ![Vue 3](https://img.shields.io/badge/Vue.js-3.5.26-4FC08D?logo=vue.js&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?logo=typescript&logoColor=white)
 ![Vuetify](https://img.shields.io/badge/Vuetify-3.11.4-1867C0?logo=vuetify&logoColor=white)
