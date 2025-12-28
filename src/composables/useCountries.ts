@@ -7,6 +7,15 @@ interface CountriesQueryResult {
   countries: Country[];
 }
 
+/**
+ * Composable for fetching and managing the list of all countries
+ * Uses Apollo Client to query the Countries GraphQL API
+ * 
+ * @returns Object containing countries array, loading state, error, and refetch function
+ * 
+ * @example
+ * const { countries, loading, error, refetch } = useCountries();
+ */
 export function useCountries () {
   const { result, loading, error, refetch }=useQuery<CountriesQueryResult>(GET_COUNTRIES);
 

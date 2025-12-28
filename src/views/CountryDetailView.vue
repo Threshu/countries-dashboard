@@ -12,7 +12,7 @@
 
 		<div v-else>
 			<v-row>
-				<v-col cols="12" md="6">
+				<v-col cols="12" md="4">
 					<v-card elevation="3">
 						<v-img
 							:src="`https://flagcdn.com/w640/${country.code.toLowerCase()}.png`"
@@ -23,138 +23,157 @@
 					</v-card>
 				</v-col>
 
-				<v-col cols="12" md="6" class="d-flex">
+				<v-col cols="12" md="8" class="d-flex">
 					<BaseCard
 						title="General Information"
 						subtitle="Basic country details"
 						class="flex-fill"
 					>
-						<v-list lines="two">
-							<v-list-item>
-								<template v-slot:prepend>
-									<v-icon icon="mdi-flag" color="primary" size="large" />
-								</template>
-								<v-list-item-title class="text-subtitle-2"
-									>Country Name</v-list-item-title
-								>
-								<v-list-item-subtitle class="text-body-1">
-									{{ country.emoji }} {{ country.name }}
-								</v-list-item-subtitle>
-							</v-list-item>
-
-							<v-list-item>
-								<template v-slot:prepend>
-									<v-icon icon="mdi-translate" color="primary" size="large" />
-								</template>
-								<v-list-item-title class="text-subtitle-2"
-									>Native Name</v-list-item-title
-								>
-								<v-list-item-subtitle class="text-body-1">
-									{{ country.native }}
-								</v-list-item-subtitle>
-							</v-list-item>
-
-							<v-list-item>
-								<template v-slot:prepend>
-									<v-icon icon="mdi-identifier" color="primary" size="large" />
-								</template>
-								<v-list-item-title class="text-subtitle-2"
-									>Country Code</v-list-item-title
-								>
-								<v-list-item-subtitle class="text-body-1">{{
-									country.code
-								}}</v-list-item-subtitle>
-							</v-list-item>
-
-							<v-list-item>
-								<template v-slot:prepend>
-									<v-icon icon="mdi-earth" color="primary" size="large" />
-								</template>
-								<v-list-item-title class="text-subtitle-2"
-									>Continent</v-list-item-title
-								>
-								<v-list-item-subtitle class="text-body-1">
-									{{ country.continent.name }}
-								</v-list-item-subtitle>
-							</v-list-item>
-
-							<v-list-item>
-								<template v-slot:prepend>
-									<v-icon icon="mdi-city" color="primary" size="large" />
-								</template>
-								<v-list-item-title class="text-subtitle-2"
-									>Capital</v-list-item-title
-								>
-								<v-list-item-subtitle class="text-body-1">
-									{{ country.capital || "N/A" }}
-								</v-list-item-subtitle>
-							</v-list-item>
-
-							<v-list-item v-if="country.awsRegion">
-								<template v-slot:prepend>
-									<v-icon icon="mdi-cloud" color="primary" size="large" />
-								</template>
-								<v-list-item-title class="text-subtitle-2"
-									>AWS Region</v-list-item-title
-								>
-								<v-list-item-subtitle class="text-body-1">{{
-									country.awsRegion
-								}}</v-list-item-subtitle>
-							</v-list-item>
-
-							<v-list-item>
-								<template v-slot:prepend>
-									<v-icon icon="mdi-phone" color="primary" size="large" />
-								</template>
-								<v-list-item-title class="text-subtitle-2"
-									>Phone Codes</v-list-item-title
-								>
-								<v-list-item-subtitle class="text-body-1">
-									<v-chip-group v-if="country.phones?.length > 0" class="ga-2">
-										<v-chip
-											v-for="phone in country.phones"
-											:key="phone"
-											color="primary"
-											variant="outlined"
-											size="small"
+						<v-row>
+							<v-col cols="12" md="6">
+								<v-list lines="two" density="compact">
+									<v-list-item>
+										<template v-slot:prepend>
+											<v-icon icon="mdi-flag" color="primary" size="large" />
+										</template>
+										<v-list-item-title class="text-subtitle-2"
+											>Country Name</v-list-item-title
 										>
-											+{{ phone }}
-										</v-chip>
-									</v-chip-group>
-									<span v-else>N/A</span>
-								</v-list-item-subtitle>
-							</v-list-item>
+										<v-list-item-subtitle class="text-body-1">
+											{{ country.emoji }} {{ country.name }}
+										</v-list-item-subtitle>
+									</v-list-item>
 
-							<v-list-item>
-								<template v-slot:prepend>
-									<v-icon
-										icon="mdi-cash-multiple"
-										color="primary"
-										size="large"
-									/>
-								</template>
-								<v-list-item-title class="text-subtitle-2"
-									>Currencies</v-list-item-title
-								>
-								<v-list-item-subtitle class="text-body-1">
-									<v-chip-group
-										v-if="country.currencies?.length > 0"
-										class="ga-2"
-									>
-										<v-chip
-											v-for="currency in country.currencies"
-											:key="currency"
-											color="success"
-											variant="outlined"
-											size="small"
+									<v-list-item>
+										<template v-slot:prepend>
+											<v-icon
+												icon="mdi-translate"
+												color="primary"
+												size="large"
+											/>
+										</template>
+										<v-list-item-title class="text-subtitle-2"
+											>Native Name</v-list-item-title
 										>
-											{{ currency }}
-										</v-chip>
-									</v-chip-group>
-									<span v-else>N/A</span>
-								</v-list-item-subtitle>
-							</v-list-item>
-						</v-list>
+										<v-list-item-subtitle class="text-body-1">
+											{{ country.native }}
+										</v-list-item-subtitle>
+									</v-list-item>
+
+									<v-list-item>
+										<template v-slot:prepend>
+											<v-icon
+												icon="mdi-identifier"
+												color="primary"
+												size="large"
+											/>
+										</template>
+										<v-list-item-title class="text-subtitle-2"
+											>Country Code</v-list-item-title
+										>
+										<v-list-item-subtitle class="text-body-1">{{
+											country.code
+										}}</v-list-item-subtitle>
+									</v-list-item>
+
+									<v-list-item>
+										<template v-slot:prepend>
+											<v-icon icon="mdi-earth" color="primary" size="large" />
+										</template>
+										<v-list-item-title class="text-subtitle-2"
+											>Continent</v-list-item-title
+										>
+										<v-list-item-subtitle class="text-body-1">
+											{{ country.continent.name }}
+										</v-list-item-subtitle>
+									</v-list-item>
+								</v-list>
+							</v-col>
+
+							<v-col cols="12" md="6">
+								<v-list lines="two" density="compact">
+									<v-list-item>
+										<template v-slot:prepend>
+											<v-icon icon="mdi-city" color="primary" size="large" />
+										</template>
+										<v-list-item-title class="text-subtitle-2"
+											>Capital</v-list-item-title
+										>
+										<v-list-item-subtitle class="text-body-1">
+											{{ country.capital || "N/A" }}
+										</v-list-item-subtitle>
+									</v-list-item>
+
+									<v-list-item v-if="country.awsRegion">
+										<template v-slot:prepend>
+											<v-icon icon="mdi-cloud" color="primary" size="large" />
+										</template>
+										<v-list-item-title class="text-subtitle-2"
+											>AWS Region</v-list-item-title
+										>
+										<v-list-item-subtitle class="text-body-1">{{
+											country.awsRegion
+										}}</v-list-item-subtitle>
+									</v-list-item>
+
+									<v-list-item>
+										<template v-slot:prepend>
+											<v-icon icon="mdi-phone" color="primary" size="large" />
+										</template>
+										<v-list-item-title class="text-subtitle-2"
+											>Phone Codes</v-list-item-title
+										>
+										<v-list-item-subtitle class="text-body-1">
+											<v-chip-group
+												v-if="country.phones?.length > 0"
+												class="ga-2"
+											>
+												<v-chip
+													v-for="phone in country.phones"
+													:key="phone"
+													color="primary"
+													variant="outlined"
+													size="small"
+												>
+													+{{ phone }}
+												</v-chip>
+											</v-chip-group>
+											<span v-else>N/A</span>
+										</v-list-item-subtitle>
+									</v-list-item>
+
+									<v-list-item>
+										<template v-slot:prepend>
+											<v-icon
+												icon="mdi-cash-multiple"
+												color="primary"
+												size="large"
+											/>
+										</template>
+										<v-list-item-title class="text-subtitle-2"
+											>Currencies</v-list-item-title
+										>
+										<v-list-item-subtitle class="text-body-1">
+											<v-chip-group
+												v-if="country.currencies?.length > 0"
+												class="ga-2"
+											>
+												<v-chip
+													v-for="currency in country.currencies"
+													:key="currency"
+													color="success"
+													variant="outlined"
+													size="small"
+												>
+													{{ currency }}
+												</v-chip>
+											</v-chip-group>
+											<span v-else>N/A</span>
+										</v-list-item-subtitle>
+									</v-list-item>
+								</v-list>
+							</v-col>
+						</v-row>
 					</BaseCard>
 				</v-col>
 			</v-row>

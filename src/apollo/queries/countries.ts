@@ -29,12 +29,25 @@ export const GET_COUNTRY_DETAIL=gql`
 			emoji
 			capital
 			currency
+			currencies
 			phone
+			phones
+			awsRegion
 			continent {
 				code
 				name
 			}
 			languages {
+				code
+				name
+				native
+				rtl
+			}
+			states {
+				code
+				name
+			}
+			subdivisions {
 				code
 				name
 			}

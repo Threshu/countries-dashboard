@@ -12,6 +12,17 @@ interface CountryDetailQueryResult {
   };
 }
 
+/**
+ * Composable for fetching detailed information about a specific country
+ * Uses Apollo Client with reactive country code parameter
+ * 
+ * @param code - Reactive reference to the country code (e.g., "PL", "US", "FR")
+ * @returns Object containing country details, loading state, error, and refetch function
+ * 
+ * @example
+ * const countryCode = ref('PL');
+ * const { country, loading, error, refetch } = useCountryDetail(countryCode);
+ */
 export function useCountryDetail (code: Ref<string>) {
   const { result, loading, error, refetch }=useQuery<CountryDetailQueryResult>(
     GET_COUNTRY_DETAIL,
