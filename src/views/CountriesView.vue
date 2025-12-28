@@ -42,7 +42,10 @@
 								md="4"
 								lg="2"
 							>
-								<CountryCard :country="country" />
+								<CountryCard
+									:country="country"
+									v-memo="[country.code, favoriteCodesSet]"
+								/>
 							</v-col>
 						</v-row>
 					</template>
@@ -65,6 +68,7 @@
 <script setup lang="ts">
 	import { ref, computed } from "vue";
 	import { useCountries } from "@/composables/useCountries";
+	import { useUserPreferences } from "@/stores/userPreferences";
 	import BaseCard from "@/components/common/BaseCard.vue";
 	import CountryFilters from "@/components/features/CountryFilters.vue";
 	import CountryCard from "@/components/features/CountryCard.vue";
@@ -74,11 +78,16 @@
 	import type { Country } from "@/types";
 
 	const { countries, loading, error, refetch } = useCountries();
+	const userPreferences = useUserPreferences();
 
 	const searchQuery = ref("");
 	const selectedContinent = ref("");
 
 	const ITEMS_PER_ROW = 6;
+
+	const favoriteCodesSet = computed(
+		() => new Set(userPreferences.favoriteCountries)
+	);
 
 	const filteredCountries = computed(() => {
 		let result = countries.value;
