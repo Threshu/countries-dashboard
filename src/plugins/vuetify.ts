@@ -23,12 +23,12 @@ export default createVuetify({
       dark: {
         dark: true,
         colors: {
-          primary: '#1976D2',
-          secondary: '#546E7A',
+          primary: '#42A5F5',
+          secondary: '#78909C',
           accent: '#FFB74D',
           error: '#EF5350',
           warning: '#FFA726',
-          info: '#42A5F5',
+          info: '#64B5F6',
           success: '#66BB6A',
           background: '#121212',
           surface: '#1E1E1E',
