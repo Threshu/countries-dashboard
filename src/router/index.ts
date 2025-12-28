@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import DashboardView from "@/views/DashboardView.vue";
-import CountriesView from "@/views/CountriesView.vue";
-import CountryDetailView from "@/views/CountryDetailView.vue";
-import CurrencyConverterView from "@/views/CurrencyConverterView.vue";
+
+const DashboardView=() => import("@/views/DashboardView.vue");
+const CountriesView=() => import("@/views/CountriesView.vue");
+const CountryDetailView=() => import("@/views/CountryDetailView.vue");
+const CurrencyConverterView=() => import("@/views/CurrencyConverterView.vue");
 
 const router=createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
