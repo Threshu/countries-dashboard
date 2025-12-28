@@ -60,14 +60,36 @@
 					<v-icon start size="small">mdi-map-marker</v-icon>
 					{{ country.capital || "No capital" }}
 				</v-chip>
+
+				<v-badge
+					v-if="additionalCurrenciesCount > 0"
+					:content="`+${additionalCurrenciesCount}`"
+					color="primary"
+				>
+					<v-tooltip location="top">
+						<template v-slot:activator="{ props: tooltipProps }">
+							<v-chip
+								v-bind="tooltipProps"
+								color="primary"
+								variant="tonal"
+								size="default"
+							>
+								<v-icon start size="small">mdi-currency-usd</v-icon>
+								{{ primaryCurrency }}
+							</v-chip>
+						</template>
+						<span>{{ allCurrencies }}</span>
+					</v-tooltip>
+				</v-badge>
+
 				<v-chip
-					v-if="country.currency"
+					v-else-if="primaryCurrency"
 					color="primary"
 					variant="tonal"
 					size="default"
 				>
 					<v-icon start size="small">mdi-currency-usd</v-icon>
-					{{ country.currency }}
+					{{ primaryCurrency }}
 				</v-chip>
 				<v-chip v-else color="grey" size="default" variant="outlined">
 					No currency
@@ -109,6 +131,22 @@
 			return "";
 		}
 		return `https://flagcdn.com/w160/${props.country.code.toLowerCase()}.png`;
+	});
+
+	const primaryCurrency = computed(() => {
+		if (!props.country?.currency) return null;
+		return props.country.currency.split(",")[0].trim();
+	});
+
+	const additionalCurrenciesCount = computed(() => {
+		if (!props.country?.currency) return 0;
+		const currencies = props.country.currency.split(",");
+		return currencies.length > 1 ? currencies.length - 1 : 0;
+	});
+
+	const allCurrencies = computed(() => {
+		if (!props.country?.currency) return "";
+		return props.country.currency;
 	});
 
 	function handleClick() {
