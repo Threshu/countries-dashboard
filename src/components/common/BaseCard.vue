@@ -2,7 +2,16 @@
 	<v-card elevation="2">
 		<v-card-title class="pa-4">
 			<div class="d-flex align-center flex-wrap ga-3">
-				<span class="text-h4 font-weight-bold">{{ title }}</span>
+				<span class="text-h4 font-weight-bold">
+					<v-icon
+						v-if="icon"
+						:icon="icon"
+						:color="iconColor"
+						size="large"
+						class="mr-2"
+					/>
+					{{ title }}
+				</span>
 				<span v-if="subtitle" class="text-body-1 text-medium-emphasis">
 					• {{ subtitle }}
 				</span>
@@ -26,6 +35,8 @@
 		title: string;
 		subtitle?: string;
 		loading?: boolean;
+		icon?: string;
+		iconColor?: string;
 	}
 
 	defineProps<Props>();

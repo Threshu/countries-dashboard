@@ -1,7 +1,12 @@
 <template>
 	<v-row>
 		<v-col cols="12">
-			<BaseCard title="Overview" subtitle="Key statistics and metrics">
+			<BaseCard
+				title="Overview"
+				subtitle="Key statistics and metrics"
+				icon="mdi-chart-box"
+				icon-color="primary"
+			>
 				<v-row>
 					<v-col
 						v-for="stat in statsCards"

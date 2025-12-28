@@ -1,0 +1,24 @@
+.dashboard-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	gap: 16px;
+	align-items: stretch;
+}
+
+.dashboard-grid > div {
+	display: flex;
+	height: 100%;
+	max-width: 250px;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.dashboard-grid .country-card {
+	width: 100%;
+}
+
+@media (min-width: 1400px) {
+	.dashboard-grid {
+		grid-template-columns: repeat(7, 1fr);
+	}
+}

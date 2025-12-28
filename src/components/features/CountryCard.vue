@@ -11,6 +11,22 @@
 		@keydown.space.prevent="handleClick"
 	>
 		<div class="flag-container">
+			<v-btn
+				:icon="isFavorite ? 'mdi-heart' : 'mdi-heart-outline'"
+				:aria-label="favoriteLabel"
+				variant="flat"
+				size="small"
+				class="favorite-btn"
+				@click.stop="toggleFavorite"
+			>
+				<v-icon
+					:icon="isFavorite ? 'mdi-heart' : 'mdi-heart-outline'"
+					:color="isFavorite ? 'red' : 'grey'"
+				/>
+				<v-tooltip activator="parent" location="top">
+					{{ favoriteLabel }}
+				</v-tooltip>
+			</v-btn>
 			<v-img
 				:src="flagUrl"
 				:alt="`${country.name} flag`"
@@ -102,6 +118,7 @@
 <script setup lang="ts">
 	import { computed, ref, onMounted, nextTick } from "vue";
 	import { useRouter } from "vue-router";
+	import { useUserPreferences } from "@/stores/userPreferences";
 	import type { ComponentPublicInstance } from "vue";
 	import type { Country } from "@/types";
 
@@ -112,9 +129,16 @@
 	const props = defineProps<Props>();
 
 	const router = useRouter();
+	const preferences = useUserPreferences();
 
 	const titleRef = ref<ComponentPublicInstance | null>(null);
 	const showTooltip = ref(false);
+
+	const isFavorite = computed(() => preferences.isFavorite(props.country.code));
+
+	const favoriteLabel = computed(() =>
+		isFavorite.value ? "Remove from favorites" : "Add to favorites"
+	);
 
 	onMounted(async () => {
 		await nextTick();
@@ -135,7 +159,8 @@
 
 	const primaryCurrency = computed(() => {
 		if (!props.country?.currency) return null;
-		return props.country.currency.split(",")[0].trim();
+		const parts = props.country.currency.split(",");
+		return parts[0]?.trim() || null;
 	});
 
 	const additionalCurrenciesCount = computed(() => {
@@ -145,8 +170,7 @@
 	});
 
 	const allCurrencies = computed(() => {
-		if (!props.country?.currency) return "";
-		return props.country.currency;
+		return props.country?.currency || "";
 	});
 
 	function handleClick() {
@@ -154,6 +178,10 @@
 			name: "country-detail",
 			params: { code: props.country.code },
 		});
+	}
+
+	function toggleFavorite() {
+		preferences.toggleFavorite(props.country.code);
 	}
 </script>
 
@@ -174,6 +202,21 @@
 
 	.flag-container {
 		background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+		position: relative;
+	}
+
+	.favorite-btn {
+		position: absolute;
+		top: 8px;
+		right: 8px;
+		z-index: 2;
+		background: rgba(255, 255, 255, 0.95) !important;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+	}
+
+	.favorite-btn:hover {
+		background: rgba(255, 255, 255, 1) !important;
+		transform: scale(1.1);
 	}
 
 	.country-card .v-card-title {

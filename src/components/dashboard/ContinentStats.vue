@@ -4,6 +4,8 @@
 			<BaseCard
 				title="Countries by Continent"
 				subtitle="Distribution of countries across continents"
+				icon="mdi-earth"
+				icon-color="success"
 			>
 				<v-row>
 					<v-col

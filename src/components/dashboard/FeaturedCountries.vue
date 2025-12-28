@@ -4,8 +4,10 @@
 			<BaseCard
 				title="Featured Countries"
 				subtitle="A sample of countries from different continents"
+				icon="mdi-star"
+				icon-color="amber"
 			>
-				<div class="featured-grid">
+				<div class="dashboard-grid">
 					<div v-for="country in sampleCountries" :key="country.code">
 						<CountryCard :country="country" />
 					</div>
@@ -50,15 +52,5 @@
 </script>
 
 <style scoped>
-	.featured-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-		gap: 16px;
-	}
-
-	@media (min-width: 1400px) {
-		.featured-grid {
-			grid-template-columns: repeat(7, 1fr);
-		}
-	}
+	@import "@/styles/dashboard-grid.css";
 </style>
