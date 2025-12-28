@@ -58,6 +58,7 @@
 	import { computed, ref } from "vue";
 	import { useCountries } from "@/composables/useCountries";
 	import { formatCurrency } from "@/utils/formatters";
+	import { EXCHANGE_RATES } from "@/constants/exchangeRates";
 	import BaseCard from "@/components/common/BaseCard.vue";
 	import LoadingState from "@/components/common/LoadingState.vue";
 	import ErrorState from "@/components/common/ErrorState.vue";
@@ -84,24 +85,6 @@
 
 	const conversionResult = ref<ConversionResult | null>(null);
 
-	const exchangeRates: Record<string, number> = {
-		USD: 1.0,
-		EUR: 0.85,
-		GBP: 0.73,
-		JPY: 110.0,
-		PLN: 4.0,
-		CHF: 0.92,
-		CAD: 1.25,
-		AUD: 1.35,
-		CNY: 6.45,
-		INR: 74.5,
-		BRL: 5.25,
-		RUB: 75.0,
-		KRW: 1180.0,
-		MXN: 20.0,
-		ZAR: 15.0,
-	};
-
 	const availableCurrencies = computed(() => {
 		const currenciesSet = new Set<string>();
 
@@ -110,7 +93,7 @@
 				const currencies = country.currency.split(",");
 				currencies.forEach((currency) => {
 					const trimmed = currency.trim();
-					if (trimmed && exchangeRates[trimmed]) {
+					if (trimmed && EXCHANGE_RATES[trimmed]) {
 						currenciesSet.add(trimmed);
 					}
 				});
@@ -121,8 +104,8 @@
 	});
 
 	function handleConvert(data: ConvertData) {
-		const fromRate = exchangeRates[data.fromCurrency] || 1;
-		const toRate = exchangeRates[data.toCurrency] || 1;
+		const fromRate = EXCHANGE_RATES[data.fromCurrency] || 1;
+		const toRate = EXCHANGE_RATES[data.toCurrency] || 1;
 
 		const amountInUSD = data.amount / fromRate;
 		const convertedAmount = amountInUSD * toRate;

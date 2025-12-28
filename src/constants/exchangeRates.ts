@@ -1,0 +1,17 @@
+export const EXCHANGE_RATES: Record<string, number>={
+  USD: 1.0,
+  EUR: 0.85,
+  GBP: 0.73,
+  JPY: 110.0,
+  PLN: 4.0,
+  CHF: 0.92,
+  CAD: 1.25,
+  AUD: 1.35,
+  CNY: 6.45,
+  INR: 74.5,
+  BRL: 5.25,
+  RUB: 75.0,
+  KRW: 1180.0,
+  MXN: 20.0,
+  ZAR: 15.0,
+} as const;
