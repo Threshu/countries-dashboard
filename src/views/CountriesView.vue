@@ -3,6 +3,8 @@
 		<BaseCard
 			title="Search Countries"
 			subtitle="Find countries by name, code, capital, or continent"
+			icon="mdi-magnify"
+			icon-color="primary"
 		>
 			<CountryFilters
 				v-model:search="searchQuery"

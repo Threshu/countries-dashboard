@@ -32,6 +32,15 @@
 		</v-btn>
 
 		<v-btn
+			:to="{ name: 'currency-converter' }"
+			prepend-icon="mdi-cash-multiple"
+			color="white"
+			variant="text"
+		>
+			Converter
+		</v-btn>
+
+		<v-btn
 			@click="preferences.toggleTheme()"
 			:icon="themeIcon"
 			:aria-label="themeLabel"

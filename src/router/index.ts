@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import DashboardView from "@/views/DashboardView.vue";
 import CountriesView from "@/views/CountriesView.vue";
 import CountryDetailView from "@/views/CountryDetailView.vue";
+import CurrencyConverterView from "@/views/CurrencyConverterView.vue";
 
 const router=createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,6 +29,14 @@ const router=createRouter({
       component: CountryDetailView,
       meta: {
         title: "Country Detail",
+      },
+    },
+    {
+      path: "/converter",
+      name: "currency-converter",
+      component: CurrencyConverterView,
+      meta: {
+        title: "Currency Converter",
       },
     },
   ],
