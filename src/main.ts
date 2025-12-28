@@ -1,7 +1,7 @@
 import { createApp, h, provide } from 'vue';
 import { createPinia } from 'pinia';
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
-import './style.css';
+import './styles/global.scss';
 import App from './App.vue';
 import vuetify from './plugins/vuetify';
 import router from './router';

@@ -1,0 +1,52 @@
+// ===========================
+// Global Essentials
+// ===========================
+
+// Standard box-sizing
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+// Better font rendering
+body {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ===========================
+// Custom Scrollbar (Primary Color)
+// ===========================
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--v-theme-primary), 0.5);
+  border-radius: 5px;
+  
+  &:hover {
+    background: rgba(var(--v-theme-primary), 0.7);
+  }
+}
+
+// ===========================
+// Accessibility - Keyboard Navigation
+// ===========================
+
+// Accessibility - keyboard navigation outline
+*:focus-visible {
+  outline: 2px solid rgba(var(--v-theme-primary), 0.5);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
