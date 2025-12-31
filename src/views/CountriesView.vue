@@ -51,16 +51,6 @@
 					</template>
 				</v-virtual-scroll>
 			</div>
-
-			<v-alert
-				v-if="filteredCountries.length < countries.length"
-				type="info"
-				variant="tonal"
-				class="mt-4"
-			>
-				Showing {{ filteredCountries.length }} of
-				{{ countries.length }} countries
-			</v-alert>
 		</div>
 	</div>
 </template>
